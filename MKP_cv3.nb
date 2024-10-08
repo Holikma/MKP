@@ -1,0 +1,160 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4968,        152]
+NotebookOptionsPosition[      4264,        132]
+NotebookOutlinePosition[      4704,        149]
+CellTagsIndexPosition[      4661,        146]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", "3", "*)"}]], "Input",
+ CellChangeTimes->{{3.937357020863117*^9, 3.9373570257626324`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"c3018ce7-196d-ad45-a718-cd0cb25cb438"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"1.", ")"}], 
+   RowBox[{"U", "^", "\.08e"}], 
+   RowBox[{"(", "x", ")"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.9373570366061974`*^9, 3.937357040838812*^9}, {
+  3.937357866223688*^9, 
+  3.9373578835464745`*^9}},ExpressionUUID->"68c447d8-c41c-c047-ac88-\
+b4992c5aab8a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", " ", "2"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateMatrix", "[", "N_", "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "[", "i", "]"}], "^", 
+      RowBox[{"(", 
+       RowBox[{"j", "-", "1"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "N"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "N"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateCVector", "[", "N_", "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Symbol", "[", 
+      RowBox[{"\"\<c\>\"", "<>", 
+       RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "N"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateUeVector", "[", "N_", "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Symbol", "[", 
+      RowBox[{"\"\<U\>\"", "<>", 
+       RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "N"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"M", " ", "=", " ", 
+    RowBox[{"generateMatrix", "[", "n", "]"}]}], 
+   ";"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cn", "=", " ", 
+   RowBox[{"generateCVector", "[", "n", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Un", " ", "=", " ", 
+   RowBox[{"generateUeVector", "[", "n", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Csol", "=", " ", 
+   RowBox[{"LinearSolve", "[", 
+    RowBox[{"M", ",", " ", "Un"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CwithSolution", "=", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"Cn", "->", "Csol"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"UFunc", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Sum", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cn", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], " ", 
+       RowBox[{"x", "^", 
+        RowBox[{"(", 
+         RowBox[{"i", "-", "1"}], ")"}]}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "n"}], "}"}]}], "]"}], "/.", " ", "CwithSolution"}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.937358504732748*^9, 3.9373585784473343`*^9}, {
+  3.9373586710285835`*^9, 3.9373586881067276`*^9}, {3.937358724567074*^9, 
+  3.9373587346714573`*^9}, {3.9373587696023293`*^9, 3.9373588160638733`*^9}, {
+  3.937359309073303*^9, 3.9373593179338017`*^9}, {3.9373593666240997`*^9, 
+  3.937359374715624*^9}, {3.93735967739563*^9, 3.937359682216982*^9}},
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"914cb09e-4784-b648-8cf1-bfc3969d4c95"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"U1", " ", "x"}], "-", 
+   RowBox[{"U2", " ", "x"}], "+", 
+   RowBox[{"U2", " ", 
+    RowBox[{"x", "[", "1", "]"}]}], "-", 
+   RowBox[{"U1", " ", 
+    RowBox[{"x", "[", "2", "]"}]}]}], 
+  RowBox[{
+   RowBox[{"x", "[", "1", "]"}], "-", 
+   RowBox[{"x", "[", "2", "]"}]}]]], "Output",
+ CellChangeTimes->{{3.9373596793833084`*^9, 3.9373596875788803`*^9}},
+ CellLabel->
+  "Out[140]=",ExpressionUUID->"ff23e576-0b5d-e349-ba3b-dc391124444d"]
+}, Open  ]]
+},
+WindowSize->{1152, 615.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d836e9af-f979-7b40-bd16-094a18bdc0eb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 197, 3, 28, "Input",ExpressionUUID->"c3018ce7-196d-ad45-a718-cd0cb25cb438"],
+Cell[758, 25, 325, 9, 28, "Input",ExpressionUUID->"68c447d8-c41c-c047-ac88-b4992c5aab8a"],
+Cell[CellGroupData[{
+Cell[1108, 38, 2652, 75, 219, "Input",ExpressionUUID->"914cb09e-4784-b648-8cf1-bfc3969d4c95"],
+Cell[3763, 115, 485, 14, 50, "Output",ExpressionUUID->"ff23e576-0b5d-e349-ba3b-dc391124444d"]
+}, Open  ]]
+}
+]
+*)
+
